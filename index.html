@@ -9,18 +9,15 @@
 </head>
 <body ng-app="ShroomSorter">
   <div ng-controller="ShroomCtrl">
-    <br>
-    <hr>
-    <br>
-    <div ng-view></div>
+
     <input type="text" ng-model="shroomName"/>
     <input type="radio" ng-model="mushroom.edible" name="poisonFilter" ng-click="isItPoison=true">Poison
     <input type="radio" ng-model="mushroom.edible" name="poisonFilter" ng-click="isItPoison=false">Non-Poison
-    <!-- filter: {edible: isItPoison} |  -->
-    <!-- -  -->
+
     <ul>
-      <li  ng-repeat="mushroom in mushroomList | filter: {edible: isItPoison} | filter: shroomName">
-        {{mushroom.name}} - {{mushroom.edible}} 
+      <!-- <li  ng-repeat="mushroom in mushroomList | filter: {edible: isItPoison} | filter: shroomName"> -->
+      <li ng-if="isItPoison !== mushroom.edible" ng-repeat="mushroom in mushroomList | filter: shroomName">
+        <p><strong>{{mushroom.name}}</strong> - Edible: {{mushroom.edible}}</p> 
       </li>
     </ul>
   </div>
