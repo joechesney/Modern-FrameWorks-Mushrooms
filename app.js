@@ -9,13 +9,18 @@ shroomApp.controller("ShroomCtrl", function ($scope, ShroomFactory) {
   ShroomFactory.getShrooms()
   .then( shroomsData => {
     console.log('shrooms2',shroomsData.data);
-    $scope.mushroomList = shroomsData.data;
-    // shroomsData.data.forEach(value =>{
-    //   $scope.mushroomList.push(value);
-    // });
+    // $scope.mushroomList = shroomsData.data;
+    $scope.mushroomList = [];
+    for(let mushroom in shroomsData.data){
+      $scope.mushroomList.push(shroomsData.data[mushroom]);
+    };
     
     console.log('shrooms3',$scope.mushroomList);
   })
+
+  const togler = function(){
+    
+  };
 });
 
 
