@@ -19,8 +19,9 @@
     <!-- filter: {edible: isItPoison} |  -->
     <!-- -  -->
     <ul>
-      <li  ng-repeat="mushroom in mushroomList | filter: {edible: isItPoison} | filter: shroomName">
-        {{mushroom.name}} - {{mushroom.edible}} 
+      <!-- <li  ng-repeat="mushroom in mushroomList | filter: {edible: isItPoison} | filter: shroomName"> -->
+      <li ng-if="isItPoison !== mushroom.edible" ng-repeat="mushroom in mushroomList | filter: shroomName">
+        <p><strong>{{mushroom.name}}</strong> - Edible: {{mushroom.edible}}</p> 
       </li>
     </ul>
   </div>
