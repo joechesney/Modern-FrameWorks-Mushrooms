@@ -14,12 +14,12 @@
     <br>
     <div ng-view></div>
     <input type="text" ng-model="shroomName"/>
-    <input type="radio" ng-model="mushroom.edible" name="isItPoison" ng-click="{{isItPoison=true}}">Poison
-    <input type="radio" ng-model="mushroom.edible" name="isItPoison" ng-click="{{isItPoison=true}}">Non-Poison
+    <input type="radio" ng-model="mushroom.edible" name="poisonFilter" ng-click="isItPoison=true">Poison
+    <input type="radio" ng-model="mushroom.edible" name="poisonFilter" ng-click="isItPoison=false">Non-Poison
     <!-- filter: {edible: isItPoison} |  -->
-    <!-- - filter: shroomName -->
+    <!-- -  -->
     <ul>
-      <li  ng-repeat="mushroom in mushroomList | filter: {edible: false}">
+      <li  ng-repeat="mushroom in mushroomList | filter: {edible: isItPoison} | filter: shroomName">
         {{mushroom.name}} - {{mushroom.edible}} 
       </li>
     </ul>
