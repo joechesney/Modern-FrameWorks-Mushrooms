@@ -1,29 +1,18 @@
 "use strict";
-const shroomApp = angular.module("ShroomSorter", []);
+const shroomApp = angular.module("ShroomSorter", ["ngRoute"]);
 
 shroomApp.controller("ShroomCtrl", function ($scope, ShroomFactory) {
   ShroomFactory.getShrooms()
   .then( shroomsData => {
-    $scope.mushroomList = [];
-    for(let mushroom in shroomsData.data){
-      $scope.mushroomList.push(shroomsData.data[mushroom]);
-    };
+    $scope.mushroomList = Object.values(shroomsData.data);
+    console.log('mushroomList',$scope.mushroomList);
   })
 });
 
-
-shroomApp.factory("ShroomFactory", function($q, $http) {
-  let getShrooms = ()=>{
-    return $q( (resolve, reject)=> {
-      $http.get("https://testetization.firebaseio.com/mushroom.json")
-      .then( (shrooms) => {
-        resolve(shrooms);
-      }) 
-      .catch( err => {
-        reject(err)
-      });
-    });
-  };
-  return { getShrooms };
+shroomApp.config( ($routeProvider)=>{
+  $routeProvider
+  .when("/", {
+    templateUrl: "partials/template.html",
+    controller: "ShroomCtrl"
+  });
 });
-
