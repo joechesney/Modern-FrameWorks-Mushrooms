@@ -6,21 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mushrooms</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
 </head>
 <body ng-app="ShroomSorter">
   <div ng-controller="ShroomCtrl">
-
-    <input type="text" ng-model="shroomName"/>
-    <input type="radio" ng-model="mushroom.edible" name="poisonFilter" ng-click="isItPoison=true">Poison
-    <input type="radio" ng-model="mushroom.edible" name="poisonFilter" ng-click="isItPoison=false">Non-Poison
-
-    <ul>
-      <!-- <li  ng-repeat="mushroom in mushroomList | filter: {edible: isItPoison} | filter: shroomName"> -->
-      <li ng-if="isItPoison !== mushroom.edible" ng-repeat="mushroom in mushroomList | filter: shroomName">
-        <p><strong>{{mushroom.name}}</strong> - Edible: {{mushroom.edible}}</p> 
-      </li>
-    </ul>
+    <div ng-view></div>
+   
   </div>
   <script src="app.js"></script>
+  <script src='./mushroom.factory.js'></script>
 </body>
 </html>
