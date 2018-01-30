@@ -4,8 +4,8 @@
 
 <ul>
   <!-- <li  ng-repeat="mushroom in mushroomList | filter: {edible: isItPoison} | filter: {name: shroomName}"> -->
-  <li ng-repeat="mushroom in mushroomList | filter: {name :shroomName, edible: isItPoison}">
-  <!-- <li ng-if="poison !== mushroom.edible" ng-repeat="mushroom in mushroomList | filter: {name :shroomName}"> -->
+  <!-- <li ng-repeat="mushroom in mushroomList | filter: {name :shroomName, edible: isItPoison}"> -->
+  <li ng-if="poison !== mushroom.edible" ng-repeat="mushroom in mushroomList | filter: {name :shroomName}">
     <p><strong>{{mushroom.name}}</strong> - Edible: {{mushroom.edible}}</p> 
   </li>
 
